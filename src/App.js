@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+
+import GlobalStyle from './styles/global';
 
 function App() {
-  return <h1>MeetApp</h1>;
+  return (
+    <Fragment>
+      <GlobalStyle />
+    </Fragment>
+  );
 }
 
 export default App;
