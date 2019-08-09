@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
 
+import './config/ReactotronConfig';
+
 import GlobalStyle from './styles/global';
 
 function App() {
