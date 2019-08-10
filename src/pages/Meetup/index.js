@@ -11,7 +11,7 @@ import Button from '~/components/Button';
 
 import { ContentHeader, Image, Content, Footer } from './styles';
 
-export default function Details() {
+export default function Meetup() {
   return (
     <Container>
       <ContentHeader>
