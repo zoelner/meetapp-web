@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
 
-export default styled.button`
+export default styled.button.attrs(props => ({
+  color: props.color || '#d44059',
+}))`
   display: flex;
   align-items: center;
   justify-content: center;
 
   padding: 12px 22px;
-  background: #d44059;
+  background: ${props => props.color};
   margin: 5px 0 0;
   font-weight: bold;
   color: #fff;
@@ -16,6 +18,13 @@ export default styled.button`
   font-size: 16px;
   transition: background 0.2s;
   &:hover {
-    background: ${darken(0.03, '#F94D6A')};
+    background: ${props => darken(0.1, props.color)};
+  }
+
+  svg {
+    height: 20px;
+    width: 20px;
+    color: #fff;
+    margin-right: 10px;
   }
 `;
