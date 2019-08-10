@@ -1,12 +1,5 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  max-width: 900px;
-  margin: 50px auto;
-  display: flex;
-  flex-direction: column;
-`;
-
 export const ContentHeader = styled.div`
   display: flex;
   flex-direction: row;

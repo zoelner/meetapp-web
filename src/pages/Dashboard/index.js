@@ -1,8 +1,9 @@
 import React from 'react';
 import { MdKeyboardArrowRight } from 'react-icons/md';
+import Container from '~/components/Container';
 import Button from '~/components/Button';
 
-import { Container, ContentHeader, List, ListItem } from './styles';
+import { ContentHeader, List, ListItem } from './styles';
 
 export default function Dashboard() {
   return (
