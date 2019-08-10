@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '~/assets/logo.svg';
 
 import { Container, Content, Profile } from './styles';
+import Button from '../Button';
 
 export default function Header() {
   return (
@@ -21,7 +22,7 @@ export default function Header() {
               <strong>Everton Zoelner</strong>
               <Link to="/profile">Meu perfil</Link>
             </div>
-            <button type="submit">Sair</button>
+            <Button type="submit">Sair</Button>
           </Profile>
         </aside>
       </Content>
