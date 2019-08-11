@@ -10,11 +10,9 @@ export default function Header() {
   return (
     <Container>
       <Content>
-        <nav>
-          <span>
-            <Logo />
-          </span>
-        </nav>
+        <Link to="/">
+          <Logo />
+        </Link>
 
         <aside>
           <Profile>

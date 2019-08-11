@@ -12,18 +12,11 @@ export const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  nav {
-    display: flex;
-    align-items: center;
-    span {
-      margin-right: 20px;
-      padding-right: 20px;
-      svg {
-        width: 32px;
-        height: 32px;
-        fill: #7159c1;
-      }
-    }
+
+  svg {
+    width: 32px;
+    height: 32px;
+    fill: #7159c1;
   }
   aside {
     display: flex;
