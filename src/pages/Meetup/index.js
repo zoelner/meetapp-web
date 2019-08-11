@@ -1,54 +1,82 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   MdModeEdit,
   MdDeleteForever,
   MdToday,
   MdLocationOn,
 } from 'react-icons/md';
+import { format, parseISO } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 
 import Container from '~/components/Container';
 import Button from '~/components/Button';
 
 import { ContentHeader, Image, Content, Footer } from './styles';
+import api from '~/services/api';
 
-export default function Meetup() {
+export default function Meetup({ match }) {
+  const { id } = match.params;
+
+  const [meetup, setMeetup] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadMeetup() {
+      const response = await api.get(`organizing/${id}`);
+
+      const data = {
+        ...response.data,
+        parsedDate: format(
+          parseISO(response.data.date),
+          "d 'de' MMMM, 'às' H'h'",
+          {
+            locale: pt,
+          }
+        ),
+      };
+
+      setMeetup(data);
+      setLoading(false);
+    }
+
+    loadMeetup();
+  });
+
   return (
     <Container>
-      <ContentHeader>
-        <h1>Meetup de React Native</h1>
-        <div>
-          <Button type="button" color="#4DBAF9">
-            <MdModeEdit />
-            Editar
-          </Button>
-          <Button type="button">
-            <MdDeleteForever />
-            Cancelar
-          </Button>
-        </div>
-      </ContentHeader>
+      {loading ? (
+        <h1>Loading</h1>
+      ) : (
+        <>
+          <ContentHeader>
+            <h1>{meetup.title}</h1>
+            {!meetup.past && (
+              <div>
+                <Button type="button" color="#4DBAF9">
+                  <MdModeEdit />
+                  Editar
+                </Button>
+                <Button type="button">
+                  <MdDeleteForever />
+                  Cancelar
+                </Button>
+              </div>
+            )}
+          </ContentHeader>
 
-      <Image src="" alt="Meetup de React Native" />
-      <Content>
-        <p>
-          O Meetup de React Native é um evento que reúne a comunidade de
-          desenvolvimento mobile utilizando React a fim de compartilhar
-          conhecimento. Todos são convidados.
-        </p>
-        <p>
-          Caso queira participar como palestrante do meetup envie um e-mail para
-          organizacao@meetuprn.com.br.
-        </p>
-      </Content>
+          <Image src={meetup.File.url} alt={meetup.title} />
+          <Content>{meetup.description}</Content>
 
-      <Footer>
-        <span>
-          <MdToday size={20} /> 24 de Junho, às 20h
-        </span>
-        <span>
-          <MdLocationOn size={20} /> Rua Guilherme Gembala, 260
-        </span>
-      </Footer>
+          <Footer>
+            <span>
+              <MdToday size={20} /> {meetup.parsedDate}
+            </span>
+            <span>
+              <MdLocationOn size={20} /> {meetup.location}
+            </span>
+          </Footer>
+        </>
+      )}
     </Container>
   );
 }
