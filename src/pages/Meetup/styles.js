@@ -53,5 +53,9 @@ export const Footer = styled.div`
     :not(:first-child) {
       margin-left: 33px;
     }
+
+    svg {
+      margin-right: 10px;
+    }
   }
 `;

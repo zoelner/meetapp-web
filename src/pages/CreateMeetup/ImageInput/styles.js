@@ -19,7 +19,7 @@ export const Container = styled.div`
       border-radius: 4px;
     }
 
-    span {
+    div {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -27,6 +27,14 @@ export const Container = styled.div`
       font-size: 20px;
       font-weight: 700;
       color: rgba(255, 255, 255, 0.3);
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      svg {
+        margin-bottom: 10px;
+      }
     }
     input {
       display: none;

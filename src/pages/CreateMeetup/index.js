@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Input } from '@rocketseat/unform';
 
+import { MdAddCircleOutline } from 'react-icons/md';
 import Button from '~/components/Button';
 import DatePicker from '~/components/DatePicker';
 
@@ -27,7 +28,9 @@ export default function CreateMeetup() {
         <DatePicker name="date" placeholder="Data" />
         <Input name="location" placeholder="Localização" />
 
-        <Button type="submit">Salvar Meetup</Button>
+        <Button type="submit">
+          <MdAddCircleOutline /> Salvar Meetup
+        </Button>
       </Form>
     </Container>
   );

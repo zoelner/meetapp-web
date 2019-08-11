@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useField } from '@rocketseat/unform';
+import { MdPhotoCamera } from 'react-icons/md';
 import api from '~/services/api';
 
 import { Container } from './styles';
@@ -39,7 +40,12 @@ export default function ImageInput() {
     <Container>
       <label htmlFor="avatar">
         <img src={preview} alt="" />
-        <span>Selecione a imagem</span>
+        {!preview && (
+          <div>
+            <MdPhotoCamera size={54} />
+            <span>Selecione a imagem</span>
+          </div>
+        )}
         <input
           type="file"
           id="avatar"
