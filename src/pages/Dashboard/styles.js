@@ -30,6 +30,12 @@ export const ListItem = styled.li`
   height: 62px;
   border-radius: 4px;
 
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.2);
+  }
+
   :not(:first-child) {
     margin-top: 10px;
   }
