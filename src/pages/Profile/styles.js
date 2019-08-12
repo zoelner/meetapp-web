@@ -1,8 +1,7 @@
 import styled from 'styled-components';
+import ContainerModel from '~/components/Container';
 
-export const Container = styled.div`
-  max-width: 600px;
-  margin: 50px auto;
+export const Container = styled(ContainerModel)`
   form {
     display: flex;
     flex-direction: column;
