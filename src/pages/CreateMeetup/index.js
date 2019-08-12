@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Input } from '@rocketseat/unform';
-
+import { toast } from 'react-toastify';
 import { MdAddCircleOutline } from 'react-icons/md';
 import Button from '~/components/Button';
 import DatePicker from '~/components/DatePicker';
@@ -8,17 +8,24 @@ import DatePicker from '~/components/DatePicker';
 import ImageInput from '~/components/ImageInput';
 
 import { Container } from './styles';
-
-const meetup = {};
+import history from '~/services/history';
+import api from '~/services/api';
 
 export default function CreateMeetup() {
-  function handleSubmit(data) {
-    console.log(data);
+  async function handleSubmit(data) {
+    try {
+      const response = await api.post('meetups', data);
+      toast.success('Meetup created successfully!');
+
+      history.push(`/meetups/${response.data.id}`);
+    } catch (error) {
+      toast.error('Ocorreu um erro, favor verificar seus dados');
+    }
   }
 
   return (
     <Container>
-      <Form initialData={meetup} onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <ImageInput name="image_id" />
 
         <Input name="title" placeholder="Titulo do Meetup" />
