@@ -17,6 +17,12 @@ export const List = styled.ul`
   flex-direction: column;
   list-style: none;
   margin-top: 48px;
+
+  a {
+    :not(:first-child) {
+      margin-top: 10px;
+    }
+  }
 `;
 
 export const ListItem = styled.li`
@@ -34,10 +40,6 @@ export const ListItem = styled.li`
 
   &:hover {
     background: rgba(0, 0, 0, 0.2);
-  }
-
-  :not(:first-child) {
-    margin-top: 10px;
   }
 
   strong {
