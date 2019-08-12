@@ -1,11 +1,7 @@
 import styled from 'styled-components';
+import ContainerModel from '~/components/Container';
 
-export const Container = styled.div`
-  max-width: 900px;
-  margin: 50px auto;
-  display: flex;
-  flex-direction: column;
-
+export const Container = styled(ContainerModel)`
   form {
     input,
     textarea {
