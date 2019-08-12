@@ -60,7 +60,8 @@ export default function EditMeetup({ match }) {
           <Input name="title" placeholder="Titulo do Meetup" />
           <Input
             name="description"
-            placeholder="Seu endereço de e-mail"
+            placeholder="Descrição"
+            maxLength={255}
             multiline
           />
           <DatePicker name="date" placeholder="Data" />

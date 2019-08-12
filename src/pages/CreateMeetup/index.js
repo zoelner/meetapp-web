@@ -12,7 +12,9 @@ import { Container } from './styles';
 const meetup = {};
 
 export default function CreateMeetup() {
-  function handleSubmit(data) {}
+  function handleSubmit(data) {
+    console.log(data);
+  }
 
   return (
     <Container>
@@ -22,7 +24,8 @@ export default function CreateMeetup() {
         <Input name="title" placeholder="Titulo do Meetup" />
         <Input
           name="description"
-          placeholder="Seu endereço de e-mail"
+          placeholder="Descrição"
+          maxLength={255}
           multiline
         />
         <DatePicker name="date" placeholder="Data" />
