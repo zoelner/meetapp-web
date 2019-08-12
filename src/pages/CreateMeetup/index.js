@@ -5,7 +5,7 @@ import { MdAddCircleOutline } from 'react-icons/md';
 import Button from '~/components/Button';
 import DatePicker from '~/components/DatePicker';
 
-import ImageInput from './ImageInput';
+import ImageInput from '~/components/ImageInput';
 
 import { Container } from './styles';
 

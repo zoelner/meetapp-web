@@ -6,7 +6,7 @@ import api from '~/services/api';
 import { Container } from './styles';
 
 export default function ImageInput() {
-  const { defaultValue, registerField } = useField('avatar');
+  const { defaultValue, registerField } = useField('image');
 
   const [file, setFile] = useState(defaultValue && defaultValue.id);
   const [preview, setPreview] = useState(defaultValue && defaultValue.url);
@@ -16,12 +16,13 @@ export default function ImageInput() {
   useEffect(() => {
     if (ref.current) {
       registerField({
-        name: 'avatar_id',
+        name: 'image_id',
         ref: ref.current,
         path: 'dataset.file',
       });
     }
-  }, [ref, registerField]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ref.current]);
 
   async function handleChange(e) {
     const data = new FormData();
@@ -38,7 +39,7 @@ export default function ImageInput() {
 
   return (
     <Container>
-      <label htmlFor="avatar">
+      <label htmlFor="image">
         <img src={preview} alt="" />
         {!preview && (
           <div>
@@ -48,7 +49,7 @@ export default function ImageInput() {
         )}
         <input
           type="file"
-          id="avatar"
+          id="image"
           accept="image/*"
           data-file={file}
           onChange={handleChange}
