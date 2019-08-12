@@ -27,7 +27,7 @@ export default function Dashboard() {
     }
 
     loadMeetups();
-  });
+  }, []);
 
   return (
     <Container>
@@ -41,7 +41,7 @@ export default function Dashboard() {
       <List>
         {meetups.map(meetup => {
           return (
-            <Link to={`/meetups/${meetup.id}`}>
+            <Link key={meetup.id} to={`/meetups/${meetup.id}`}>
               <ListItem>
                 <strong>{meetup.title}</strong>
                 <div>
