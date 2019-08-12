@@ -16,7 +16,7 @@ export default function ImageInput() {
   useEffect(() => {
     if (ref.current) {
       registerField({
-        name: 'image_id',
+        name: 'file_id',
         ref: ref.current,
         path: 'dataset.file',
       });
@@ -39,7 +39,7 @@ export default function ImageInput() {
 
   return (
     <Container>
-      <label htmlFor="image">
+      <label htmlFor="file_id">
         <img src={preview} alt="" />
         {!preview && (
           <div>
@@ -49,7 +49,7 @@ export default function ImageInput() {
         )}
         <input
           type="file"
-          id="image"
+          id="file_id"
           accept="image/*"
           data-file={file}
           onChange={handleChange}
