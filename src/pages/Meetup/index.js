@@ -5,14 +5,15 @@ import {
   MdToday,
   MdLocationOn,
 } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
+import api from '~/services/api';
 import Container from '~/components/Container';
 import Button from '~/components/Button';
 
 import { ContentHeader, Image, Content, Footer } from './styles';
-import api from '~/services/api';
 
 export default function Meetup({ match }) {
   const { id } = match.params;
@@ -40,7 +41,7 @@ export default function Meetup({ match }) {
     }
 
     loadMeetup();
-  });
+  }, [id]);
 
   return (
     <Container>
@@ -52,10 +53,12 @@ export default function Meetup({ match }) {
             <h1>{meetup.title}</h1>
             {!meetup.past && (
               <div>
-                <Button type="button" color="#4DBAF9">
-                  <MdModeEdit />
-                  Editar
-                </Button>
+                <Link to={`/meetups/${id}/edit`}>
+                  <Button type="button" color="#4DBAF9">
+                    <MdModeEdit />
+                    Editar
+                  </Button>
+                </Link>
                 <Button type="button">
                   <MdDeleteForever />
                   Cancelar
@@ -64,7 +67,7 @@ export default function Meetup({ match }) {
             )}
           </ContentHeader>
 
-          <Image src={meetup.File.url} alt={meetup.title} />
+          <Image src={meetup.image.url} alt={meetup.title} />
           <Content>{meetup.description}</Content>
 
           <Footer>
