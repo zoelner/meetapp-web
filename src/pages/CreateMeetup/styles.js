@@ -19,6 +19,12 @@ export const Container = styled(ContainerModel)`
       &::placeholder {
         color: rgba(255, 255, 255, 0.8);
       }
+
+      & + span {
+        display: block;
+        margin-top: 10px;
+        color: #fb6f91;
+      }
     }
 
     textarea {
