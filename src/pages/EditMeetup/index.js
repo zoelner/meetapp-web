@@ -1,17 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Input } from '@rocketseat/unform';
-
+import * as Yup from 'yup';
 import { MdAddCircleOutline } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import { parseISO } from 'date-fns';
+
 import Button from '~/components/Button';
 import DatePicker from '~/components/DatePicker';
-
 import ImageInput from '~/components/ImageInput';
-
-import { Container } from './styles';
 import api from '~/services/api';
 import history from '~/services/history';
+
+import { Container } from './styles';
+
+const schema = Yup.object().shape({
+  image_id: Yup.number()
+    .transform(value => (!value ? undefined : value))
+    .required('A imagem é obrigatória'),
+  title: Yup.string().required('O titulo é obrigatório'),
+  description: Yup.string()
+    .max(255)
+    .required('A descrição é obrigatória'),
+  date: Yup.date().required('A data é obrigatória'),
+  location: Yup.string().required('A localização é obrigatória'),
+});
 
 export default function EditMeetup({ match }) {
   const { id } = match.params;
@@ -54,7 +66,7 @@ export default function EditMeetup({ match }) {
       {loading ? (
         <h1>Loading</h1>
       ) : (
-        <Form initialData={meetup} onSubmit={handleSubmit}>
+        <Form initialData={meetup} schema={schema} onSubmit={handleSubmit}>
           <ImageInput name="image" />
 
           <Input name="title" placeholder="Titulo do Meetup" />

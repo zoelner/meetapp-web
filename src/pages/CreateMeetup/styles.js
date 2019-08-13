@@ -10,14 +10,14 @@ export const Container = styled(ContainerModel)`
       border: 0;
       border-radius: 4px;
       background: rgba(0, 0, 0, 0.2);
-      color: #515366;
+      color: rgba(255, 255, 255, 0.9);
       padding: 0 15px;
       height: 48px;
       margin-top: 10px;
       font: inherit;
 
       &::placeholder {
-        color: #999;
+        color: rgba(255, 255, 255, 0.8);
       }
     }
 
