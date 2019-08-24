@@ -14,7 +14,7 @@ import api from '~/services/api';
 import { Container } from './styles';
 
 const schema = Yup.object().shape({
-  image_id: Yup.number()
+  file_id: Yup.number()
     .transform(value => (!value ? undefined : value))
     .required('A imagem é obrigatória'),
   title: Yup.string().required('O titulo é obrigatório'),
@@ -40,7 +40,7 @@ export default function CreateMeetup() {
   return (
     <Container>
       <Form schema={schema} onSubmit={handleSubmit}>
-        <ImageInput name="image_id" />
+        <ImageInput name="file_id" />
 
         <Input name="title" placeholder="Titulo do Meetup" />
         <Input
