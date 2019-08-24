@@ -29,7 +29,7 @@ export default function CreateMeetup() {
   async function handleSubmit(data) {
     try {
       const response = await api.post('meetups', data);
-      toast.success('Meetup created successfully!');
+      toast.success('Meetup criado com sucesso.');
 
       history.push(`/meetups/${response.data.id}`);
     } catch (error) {
