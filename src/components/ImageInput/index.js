@@ -5,8 +5,8 @@ import api from '~/services/api';
 
 import { Container } from './styles';
 
-export default function ImageInput() {
-  const { defaultValue, registerField } = useField('image');
+export default function ImageInput({ name }) {
+  const { fieldName, defaultValue, registerField } = useField(name);
 
   const [file, setFile] = useState(defaultValue && defaultValue.id);
   const [preview, setPreview] = useState(defaultValue && defaultValue.url);
@@ -16,7 +16,7 @@ export default function ImageInput() {
   useEffect(() => {
     if (ref.current) {
       registerField({
-        name: 'file_id',
+        name: fieldName,
         ref: ref.current,
         path: 'dataset.file',
       });
@@ -39,7 +39,7 @@ export default function ImageInput() {
 
   return (
     <Container>
-      <label htmlFor="file_id">
+      <label htmlFor={fieldName}>
         <img src={preview} alt="" />
         {!preview && (
           <div>
@@ -49,7 +49,7 @@ export default function ImageInput() {
         )}
         <input
           type="file"
-          id="file_id"
+          id={fieldName}
           accept="image/*"
           data-file={file}
           onChange={handleChange}
